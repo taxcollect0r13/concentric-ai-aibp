@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concentric AI × AIBP Malaysia 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ──────────────────────────────────────────────────── */
+:root {
+  --amber:     #C07A22;
+  --amber-dk:  #8B5210;
+  --amber-lt:  #D4952E;
+  --box-bg:    rgba(0,0,0,0.22);
+  --box-hover: rgba(0,0,0,0.32);
+  --gold:      #A8A583;
+  --gold-pale: #F5F4EE;
+  --gold-lt:   #ECEADE;
+  --yellow:    #EE963A;
+  --black:     #1A1616;
+  --black2:    #252020;
+  --red:       #B42024;
+  --bg:        #F0EEE9;
+  --border:    rgba(60,56,56,0.1);
+  --text:      #252020;
+  --muted:     #7A7673;
+  --white:     #FFFFFF;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); }
+
+/* ── White top nav (matching AIBP site) ──────────────────────── */
+.nav {
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  position: sticky; top: 0; z-index: 200;
+}
+.nav-logo { height: 36px; object-fit: contain; }
+.nav-logo-fb { font-family: 'Crimson Pro', serif; font-size: 20px; font-weight: 700; color: var(--red); }
+.nav-right {
+  display: flex; align-items: center; gap: 20px;
+}
+.nav-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.nav-pill {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--amber); border: 1px solid var(--amber);
+  padding: 5px 14px; border-radius: 2px;
+}
+
+/* ── Hero — warm amber (matching the conference page) ─────────── */
+.hero {
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(255,200,80,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(180,100,10,.25) 0%, transparent 50%),
+    linear-gradient(130deg, #9B5E0E 0%, #C07A22 35%, #A86A18 65%, #7A4408 100%);
+  padding: 3.5rem 3rem 3rem;
+  position: relative; overflow: hidden;
+}
+/* subtle texture overlay */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+  position: relative; z-index: 1;
+}
+
+/* Left column */
+.hero-left {}
+.hero-crumb {
+  font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.55); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-crumb svg { opacity: .5; flex-shrink: 0; }
+
+.hero-logo { height: 52px; object-fit: contain; object-position: left; margin-bottom: 1.25rem; }
+.hero-logo-fb {
+  display: none; font-family: 'Crimson Pro', serif; font-size: 20px; font-weight: 700;
+  color: rgba(255,255,255,.9); margin-bottom: 1.25rem;
+}
+
+.hero-date {
+  font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.65); margin-bottom: 1.25rem;
+}
+
+.hero-heading {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700; font-style: italic;
+  color: #fff; line-height: 1.15;
+  margin-bottom: 1.25rem;
+  max-width: 560px;
+}
+
+.hero-desc {
+  font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.7);
+  max-width: 480px; margin-bottom: 2rem;
+}
+
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-outline {
+  font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: #fff; background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.5);
+  padding: 10px 20px; border-radius: 2px; cursor: pointer; text-decoration: none;
+  transition: background .15s, border-color .15s;
+}
+.btn-outline:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.8); }
+
+/* Right column — stat boxes */
+.hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  min-width: 260px; padding-top: 4px;
+}
+.stat-box {
+  background: var(--box-bg);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 3px;
+  padding: 1rem 1.25rem 1rem;
+  backdrop-filter: blur(4px);
+  cursor: default;
+  transition: background .15s;
+}
+.stat-box:hover { background: var(--box-hover); }
+.stat-num {
+  font-family: 'Crimson Pro', serif; font-size: 42px; font-weight: 700;
+  color: #fff; line-height: 1; margin-bottom: 4px;
+  min-height: 42px; display: flex; align-items: center;
+}
+.stat-label {
+  font-size: 9px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.55); margin-bottom: 2px;
+}
+.stat-sub {
+  font-size: 10px; color: rgba(255,255,255,.4);
+}
+
+/* ── Section divider ─────────────────────────────────────────── */
+.divider { height: 4px; background: var(--yellow); }
+
+/* ── Section intro bar ───────────────────────────────────────── */
+.intro-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 3rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.intro-bar-left {}
+.intro-title { font-family: 'Crimson Pro', serif; font-size: 17px; font-weight: 600; color: var(--text); }
+.intro-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.refresh-btn {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--amber); background: rgba(192,122,34,.08);
+  border: 1px solid rgba(192,122,34,.3);
+  padding: 8px 18px; border-radius: 2px; cursor: pointer;
+  transition: background .15s;
+}
+.refresh-btn:hover { background: rgba(192,122,34,.15); }
+
+/* ── Main ────────────────────────────────────────────────────── */
+.main { padding: 2.5rem 3rem 5rem; max-width: 1080px; margin: 0 auto; }
+
+/* ── Data panel ──────────────────────────────────────────────── */
+.panel {
+  background: var(--white);
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,.05);
+}
+
+/* Panel header — amber tint matching the hero language */
+.panel-hd {
+  background: linear-gradient(135deg, #9B5E0E 0%, #C07A22 100%);
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 1.5rem;
+}
+.panel-num {
+  font-size: 9px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.6); margin-bottom: 5px;
+}
+.panel-title {
+  font-family: 'Crimson Pro', serif; font-size: 22px; font-weight: 700;
+  color: #fff; line-height: 1.2; margin-bottom: 4px;
+}
+.panel-desc {
+  font-size: 12px; line-height: 1.6; color: rgba(255,255,255,.55); max-width: 520px;
+}
+.panel-count {
+  font-family: 'Crimson Pro', serif; font-size: 44px; font-weight: 700;
+  color: rgba(255,255,255,.9); line-height: 1; text-align: right;
+}
+.panel-count-lbl {
+  font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.4); margin-top: 4px; text-align: right;
+}
+
+/* ── Table ───────────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+th {
+  text-align: left; padding: 10px 20px;
+  font-size: 9px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); background: var(--gold-pale);
+  border-bottom: 0.5px solid var(--border);
+}
+td {
+  padding: 13px 20px; border-bottom: 0.5px solid rgba(60,56,56,.06);
+  font-size: 13px; color: var(--text); vertical-align: middle;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+td.co { font-weight: 700; color: var(--black); }
+td.mu { color: var(--muted); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--gold-pale); }
+
+/* ── States ──────────────────────────────────────────────────── */
+.empty { padding: 2.5rem; text-align: center; font-size: 13px; color: var(--muted); font-style: italic; }
+.err {
+  padding: 1.25rem 2rem;
+  background: #fff8f0; border-left: 3px solid var(--yellow);
+  font-size: 13px; color: #6B4210; line-height: 1.65;
+}
+.err strong { color: var(--black); }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.footer {
+  background: var(--black);
+  padding: 1.75rem 3rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { height: 22px; opacity: .5; }
+.footer-mid { font-size: 11px; color: rgba(255,255,255,.28); text-align: center; }
+.footer-ts { font-size: 11px; color: rgba(255,255,255,.2); }
+
+@media (max-width: 720px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; min-width: unset; }
+  .nav, .intro-bar, .main, .footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .hero { padding: 2.5rem 1.25rem 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── White nav ─────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <img class="nav-logo"
+    src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=1500w"
+    alt="AIBP by Industry Platform"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+  <span class="nav-logo-fb" style="display:none">AIBP</span>
+  <div class="nav-right">
+    <span class="nav-label">Malaysia 2026</span>
+    <div class="nav-pill">Concentric AI · Partner View</div>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-inner">
+
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-crumb">
+        AIBP Conference &amp; Exhibition
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Malaysia
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Partner
+      </div>
+
+      <img class="hero-logo"
+        src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/c1115e32-fd7e-4e3f-ae7b-4a77d1065efa/C%26E+MY+Logo+White+Ver.png?format=500w"
+        alt="AIBP C&E Malaysia"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <div class="hero-logo-fb">AIBP C&amp;E Malaysia 2026</div>
+
+      <div class="hero-date">08 – 09 July 2026 &nbsp;·&nbsp; Kuala Lumpur, Malaysia</div>
+
+      <div class="hero-heading">Concentric AI<br><em style="font-style:italic">at AIBP Malaysia 2026</em></div>
+
+      <div class="hero-desc">
+        A live partner dashboard showing AIBP's account coverage, conference audience, and private networking session registrations for Concentric AI.
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn-outline" onclick="loadAll()">↻ &nbsp;Refresh Data</button>
+      </div>
+    </div>
+
+    <!-- Right — live stat boxes -->
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num" id="stat-bp">—</div>
+        <div class="stat-label">ICP &amp; BP</div>
+        <div class="stat-sub">Curated accounts</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-ca">—</div>
+        <div class="stat-label">Conference</div>
+        <div class="stat-sub">Session 6 attendees</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="stat-ns">—</div>
+        <div class="stat-label">Networking</div>
+        <div class="stat-sub">Private session</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10–15</div>
+        <div class="stat-label">Target</div>
+        <div class="stat-sub">Pax for session</div>
+      </div>
+    </div>
+
+  </div>
+</header>
+<div class="divider"></div>
+
+<!-- ── Intro bar ─────────────────────────────────────────────────────── -->
+<div class="intro-bar">
+  <div class="intro-bar-left">
+    <div class="intro-title">Live Engagement Overview</div>
+    <div class="intro-sub">Data pulls live from Google Sheets — reload or click Refresh to update</div>
+  </div>
+  <button class="refresh-btn" onclick="loadAll()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    Refresh
+  </button>
+</div>
+
+<!-- ── Data panels ────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- 01 ICP & BP -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div>
+        <div class="panel-num">01 &nbsp;·&nbsp; Account Coverage</div>
+        <div class="panel-title">Curated ICP &amp; BP</div>
+      </div>
+      <div>
+        <div class="panel-count" id="count-bp">—</div>
+        <div class="panel-count-lbl">Accounts</div>
+      </div>
+    </div>
+    <div id="body-bp"><div class="empty">Loading…</div></div>
+  </div>
+
+  <!-- 02 Conference Attendees -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div>
+        <div class="panel-num">02 &nbsp;·&nbsp; Conference Audience</div>
+        <div class="panel-title">Conference Attendees</div>
+        <div class="panel-desc">Session 6: Cyber Risk in an AI-Driven Enterprise &nbsp;·&nbsp; 9 July 2026</div>
+      </div>
+      <div>
+        <div class="panel-count" id="count-ca">—</div>
+        <div class="panel-count-lbl">Registered</div>
+      </div>
+    </div>
+    <div id="body-ca"><div class="empty">Loading…</div></div>
+  </div>
+
+  <!-- 03 Networking Session -->
+  <div class="panel">
+    <div class="panel-hd">
+      <div>
+        <div class="panel-num">03 &nbsp;·&nbsp; Private Session</div>
+        <div class="panel-title">Concentric AI Networking Session</div>
+        <div class="panel-desc">Attendees registered or confirmed for the private networking session &nbsp;·&nbsp; <span style="color:rgba(255,255,255,.8);font-weight:700">Target: 10–15 pax</span></div>
+      </div>
+      <div>
+        <div class="panel-count" id="count-ns">—</div>
+        <div class="panel-count-lbl">Attendees</div>
+      </div>
+    </div>
+    <div id="body-ns"><div class="empty">Loading…</div></div>
+  </div>
+
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <img class="footer-logo"
+    src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=1500w"
+    alt="AIBP" onerror="this.style.display='none'">
+  <div class="footer-mid">AIBP Malaysia 2026 &nbsp;·&nbsp; Concentric AI Partner Dashboard &nbsp;·&nbsp; Confidential</div>
+  <div class="footer-ts" id="footer-ts"></div>
+</footer>
+
+<script>
+const SHEET_ID = '1NYW7MgmyqcPH-n3Tqq5Hx218H-YorTupTOvyxdZNQcA';
+
+const PANELS = [
+  { tab: 'Buyer Personas',       bodyId: 'body-bp', countId: 'count-bp', statId: 'stat-bp' },
+  { tab: 'Conference Attendees', bodyId: 'body-ca', countId: 'count-ca', statId: 'stat-ca' },
+  { tab: 'Networking Session',   bodyId: 'body-ns', countId: 'count-ns', statId: 'stat-ns' },
+];
+
+async function fetchTab(tabName) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tabName)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const text = await res.text();
+  const m = text.match(/google\.visualization\.Query\.setResponse\((\{[\s\S]*\})\)/);
+  if (!m) throw new Error('Unexpected response');
+  const d = JSON.parse(m[1]);
+  if (d.status === 'error') throw new Error(d.errors?.[0]?.message || 'Sheet error');
+  return d.table;
+}
+
+function parseRows(table) {
+  if (!table?.rows?.length) return [];
+  return table.rows.map(row => {
+    const c = row.c || [];
+    const v = i => (!c[i] || c[i].v == null) ? '' : (c[i].f ?? String(c[i].v));
+    return { title: v(0), company: v(1), industry: v(2) };
+  }).filter(r => r.title || r.company);
+}
+
+const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function renderPanel(bodyId, countId, statId, rows) {
+  const n = rows.length;
+  document.getElementById(countId).textContent = n;
+  if (statId) document.getElementById(statId).textContent = n;
+  if (!n) {
+    document.getElementById(bodyId).innerHTML = '<div class="empty">No entries yet — add data to this tab in the Google Sheet.</div>';
+    return;
+  }
+  document.getElementById(bodyId).innerHTML = `
+    <table>
+      <thead><tr>
+        <th style="width:34%">Job Title</th>
+        <th style="width:38%">Company</th>
+        <th style="width:28%">Industry</th>
+      </tr></thead>
+      <tbody>${rows.map(r => `<tr>
+        <td style="width:34%" class="co">${esc(r.title)||'—'}</td>
+        <td style="width:38%">${esc(r.company)||'—'}</td>
+        <td style="width:28%" class="mu">${esc(r.industry)||'—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+}
+
+function renderError(bodyId, countId, statId, msg) {
+  document.getElementById(countId).textContent = '—';
+  if (statId) document.getElementById(statId).textContent = '—';
+  document.getElementById(bodyId).innerHTML = `
+    <div class="err">
+      <strong>Could not load data.</strong> Ensure the Google Sheet is set to "Anyone with the link can view" and the tab name is correct.<br>
+      <small style="opacity:.7">${esc(msg)}</small>
+    </div>`;
+}
+
+async function loadAll() {
+  PANELS.forEach(({ bodyId, countId, statId }) => {
+    document.getElementById(bodyId).innerHTML = '<div class="empty">Loading…</div>';
+    document.getElementById(countId).textContent = '—';
+    if (statId) document.getElementById(statId).textContent = '—';
+  });
+
+  await Promise.all(PANELS.map(async ({ tab, bodyId, countId, statId }) => {
+    try {
+      const table = await fetchTab(tab);
+      renderPanel(bodyId, countId, statId, parseRows(table));
+    } catch(e) {
+      renderError(bodyId, countId, statId, e.message);
+    }
+  }));
+
+  const now = new Date().toLocaleString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  const el = document.getElementById('footer-ts');
+  if (el) el.textContent = 'Refreshed: ' + now;
+}
+
+loadAll();
+</script>
+</body>
+</html>
