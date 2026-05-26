@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concentric AI × AIBP Malaysia 2026</title>
+<title>Attendee Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -276,7 +276,7 @@ tr:hover td { background: var(--gold-pale); }
   <span class="nav-logo-fb" style="display:none">AIBP</span>
   <div class="nav-right">
     <span class="nav-label">Malaysia 2026</span>
-    <div class="nav-pill">Concentric AI · Partner View</div>
+    <div class="nav-pill">Attendee Dashboard</div>
   </div>
 </nav>
 
@@ -302,7 +302,7 @@ tr:hover td { background: var(--gold-pale); }
 
       <div class="hero-date">08 – 09 July 2026 &nbsp;·&nbsp; Kuala Lumpur, Malaysia</div>
 
-      <div class="hero-heading">Concentric AI<br><em style="font-style:italic">at AIBP Malaysia 2026</em></div>
+      <div class="hero-heading">Attendee Dashboard</div>
 
       <div class="hero-desc">
         A live partner dashboard showing AIBP's account coverage, conference audience, and private networking session registrations for Concentric AI.
@@ -410,7 +410,7 @@ tr:hover td { background: var(--gold-pale); }
   <img class="footer-logo"
     src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=1500w"
     alt="AIBP" onerror="this.style.display='none'">
-  <div class="footer-mid">AIBP Malaysia 2026 &nbsp;·&nbsp; Concentric AI Partner Dashboard &nbsp;·&nbsp; Confidential</div>
+  <div class="footer-mid">AIBP C&amp;E Malaysia 2026 &nbsp;·&nbsp; Attendee Dashboard &nbsp;·&nbsp; Confidential</div>
   <div class="footer-ts" id="footer-ts"></div>
 </footer>
 
@@ -440,7 +440,7 @@ function parseRows(table) {
   return table.rows.map(row => {
     const c = row.c || [];
     const v = i => (!c[i] || c[i].v == null) ? '' : (c[i].f ?? String(c[i].v));
-    return { title: v(0), company: v(1), industry: v(2) };
+    return { company: v(0), title: v(1), industry: v(2) };
   }).filter(r => r.title || r.company);
 }
 
@@ -457,13 +457,13 @@ function renderPanel(bodyId, countId, statId, rows) {
   document.getElementById(bodyId).innerHTML = `
     <table>
       <thead><tr>
-        <th style="width:34%">Job Title</th>
         <th style="width:38%">Company</th>
+        <th style="width:34%">Job Title</th>
         <th style="width:28%">Industry</th>
       </tr></thead>
       <tbody>${rows.map(r => `<tr>
-        <td style="width:34%" class="co">${esc(r.title)||'—'}</td>
         <td style="width:38%">${esc(r.company)||'—'}</td>
+        <td style="width:34%" class="co">${esc(r.title)||'—'}</td>
         <td style="width:28%" class="mu">${esc(r.industry)||'—'}</td>
       </tr>`).join('')}</tbody>
     </table>`;
