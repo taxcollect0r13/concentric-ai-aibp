@@ -438,6 +438,11 @@ tr:hover td { background: var(--gold-pale); }
             <div class="tb-num-live" id="target-ns">—</div>
             <div class="tb-lbl">Registered to Date</div>
           </div>
+          <div class="tb-sep"></div>
+          <div>
+            <div class="tb-num">15</div>
+            <div class="tb-lbl">Deliverable (incl. staff)</div>
+          </div>
         </div>
       </div>
     </div>
@@ -563,7 +568,9 @@ function parseRows(table) {
     const c = row.c || [];
     const v = i => (!c[i] || c[i].v == null) ? '' : (c[i].f ?? String(c[i].v));
     return { company: v(0), title: v(1), industry: v(2) };
-  }).filter(r => r.title || r.company);
+  }).filter(r => (r.title || r.company)
+    && r.company.toLowerCase() !== 'company name'
+    && r.title.toLowerCase() !== 'job title');
 }
 
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
