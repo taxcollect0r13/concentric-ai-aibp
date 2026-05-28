@@ -257,11 +257,49 @@ tr:hover td { background: var(--gold-pale); }
 .footer-mid { font-size: 11px; color: rgba(255,255,255,.28); text-align: center; }
 .footer-ts { font-size: 11px; color: rgba(255,255,255,.2); }
 
+/* ── Nav partner logo ────────────────────────────────────────────── */
+.nav-logos { display: flex; align-items: center; gap: 14px; }
+.nav-vdivider { width: 1px; height: 28px; background: rgba(0,0,0,.12); }
+.nav-logo-partner { height: 24px; object-fit: contain; }
+
+/* ── Countdown ───────────────────────────────────────────────────── */
+.cd-label { font-size: 9px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); margin: 14px 0 6px; }
+.countdown-wrap { display: flex; gap: 8px; }
+.cd-unit { text-align: center; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.12); border-radius: 5px; padding: 8px 12px; min-width: 54px; }
+.cd-num { font-family: 'Crimson Pro', serif; font-size: 24px; font-weight: 700; color: #fff; line-height: 1; }
+.cd-lbl { font-size: 8px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 3px; }
+
+/* ── Project banner ──────────────────────────────────────────────── */
+.project-banner { background: var(--black2); padding: 3rem; }
+.pb-inner { max-width: 1180px; margin: 0 auto; }
+.pb-tag { font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
+.pb-title { font-family: 'Crimson Pro', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.35; max-width: 720px; margin-bottom: 8px; }
+.pb-desc { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.65; max-width: 700px; margin-bottom: 2rem; }
+.pb-tactics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pb-tactic { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 7px; padding: 20px 22px; }
+.pb-tactic-num { font-size: 9px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 5px; }
+.pb-tactic-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.pb-tactic-body { font-size: 12px; color: rgba(255,255,255,.7); line-height: 1.65; }
+
+/* ── Targets banner ──────────────────────────────────────────────── */
+.targets-banner { background: var(--gold-lt); border-bottom: 1px solid var(--border); padding: 2.5rem 3rem; }
+.tb-inner { max-width: 1180px; margin: 0 auto; }
+.tb-tag { font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.25rem; }
+.tb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tb-card { background: #fff; border: 1px solid var(--border); border-radius: 7px; padding: 20px 24px; }
+.tb-card-title { font-size: 10px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.tb-stats { display: flex; align-items: flex-end; gap: 20px; }
+.tb-num { font-family: 'Crimson Pro', serif; font-size: 44px; font-weight: 700; color: var(--black); line-height: 1; }
+.tb-num-live { font-family: 'Crimson Pro', serif; font-size: 44px; font-weight: 700; color: var(--amber); line-height: 1; }
+.tb-lbl { font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.tb-sep { width: 1px; height: 44px; background: var(--border); margin: 0 2px; align-self: center; }
+
 @media (max-width: 720px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr 1fr; min-width: unset; }
-  .nav, .intro-bar, .main, .footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .nav, .intro-bar, .main, .footer, .project-banner, .targets-banner { padding-left: 1.25rem; padding-right: 1.25rem; }
   .hero { padding: 2.5rem 1.25rem 2rem; }
+  .pb-tactics, .tb-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -269,11 +307,17 @@ tr:hover td { background: var(--gold-pale); }
 
 <!-- ── White nav ─────────────────────────────────────────────────────── -->
 <nav class="nav">
-  <img class="nav-logo"
-    src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=1500w"
-    alt="AIBP by Industry Platform"
-    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-  <span class="nav-logo-fb" style="display:none">AIBP</span>
+  <div class="nav-logos">
+    <img class="nav-logo"
+      src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=1500w"
+      alt="AIBP by Industry Platform"
+      onerror="this.style.display='none';">
+    <div class="nav-vdivider"></div>
+    <img class="nav-logo-partner"
+      src="https://concentric.ai/wp-content/uploads/2025/03/Full-Logo-2-Colors-Susan-S-1.png"
+      alt="Concentric AI"
+      onerror="this.style.display='none';">
+  </div>
   <div class="nav-right">
     <span class="nav-label">Malaysia 2026</span>
     <div class="nav-pill">Attendee Dashboard</div>
@@ -301,6 +345,14 @@ tr:hover td { background: var(--gold-pale); }
       <div class="hero-logo-fb">AIBP C&amp;E Malaysia 2026</div>
 
       <div class="hero-date">08 – 09 July 2026 &nbsp;·&nbsp; Kuala Lumpur, Malaysia</div>
+
+      <div class="cd-label">Conference in</div>
+      <div class="countdown-wrap">
+        <div class="cd-unit"><div class="cd-num" id="cd-days">—</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-hrs">—</div><div class="cd-lbl">Hrs</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-min">—</div><div class="cd-lbl">Min</div></div>
+        <div class="cd-unit"><div class="cd-num" id="cd-sec">—</div><div class="cd-lbl">Sec</div></div>
+      </div>
 
       <div class="hero-heading">Attendee Dashboard</div>
 
@@ -336,6 +388,64 @@ tr:hover td { background: var(--gold-pale); }
 </header>
 <div class="divider"></div>
 
+<!-- ── Banner 1: Project Overview ────────────────────────────────────── -->
+<div class="project-banner">
+  <div class="pb-inner">
+    <div class="pb-tag">About This Programme</div>
+    <div class="pb-title">A structured, multi-touch programme to accelerate Concentric AI's market presence in Malaysia and the Philippines.</div>
+    <div class="pb-desc">Designed to help Concentric AI break into net-new enterprise accounts and build pipeline — through targeted engagement that creates more coverage of buyer personas and influencers within the markets.</div>
+    <div class="pb-tactics">
+      <div class="pb-tactic">
+        <div class="pb-tactic-num">Track 01</div>
+        <div class="pb-tactic-title">Conference &amp; Exhibition</div>
+        <div class="pb-tactic-body">Brand visibility and thought leadership in front of enterprise leaders — creating awareness and credibility at scale across the market.</div>
+      </div>
+      <div class="pb-tactic">
+        <div class="pb-tactic-num">Track 02</div>
+        <div class="pb-tactic-title">Private Networking Session</div>
+        <div class="pb-tactic-body">Targeted engagement with a minimum of 15 key enterprise stakeholders — to gather direct market insights, understand priorities, and qualify pipeline opportunities for follow-up.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Banner 2: Targets & Progress ──────────────────────────────────── -->
+<div class="targets-banner">
+  <div class="tb-inner">
+    <div class="tb-tag">Programme Targets &amp; Progress</div>
+    <div class="tb-grid">
+      <div class="tb-card">
+        <div class="tb-card-title">Conference &amp; Exhibition &nbsp;·&nbsp; Session 6</div>
+        <div class="tb-stats">
+          <div>
+            <div class="tb-num">60</div>
+            <div class="tb-lbl">Target BPs</div>
+          </div>
+          <div class="tb-sep"></div>
+          <div>
+            <div class="tb-num-live" id="target-ca">—</div>
+            <div class="tb-lbl">Registered to Date</div>
+          </div>
+        </div>
+      </div>
+      <div class="tb-card">
+        <div class="tb-card-title">Concentric AI Networking Session</div>
+        <div class="tb-stats">
+          <div>
+            <div class="tb-num">30</div>
+            <div class="tb-lbl">Target Attendees</div>
+          </div>
+          <div class="tb-sep"></div>
+          <div>
+            <div class="tb-num-live" id="target-ns">—</div>
+            <div class="tb-lbl">Registered to Date</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── Intro bar ─────────────────────────────────────────────────────── -->
 <div class="intro-bar">
   <div class="intro-bar-left">
@@ -358,9 +468,11 @@ tr:hover td { background: var(--gold-pale); }
         <div class="panel-num">01 &nbsp;·&nbsp; Account Coverage</div>
         <div class="panel-title">Curated ICP &amp; BP</div>
       </div>
-      <div>
-        <div class="panel-count" id="count-bp">—</div>
+      <div style="text-align:right">
+        <div class="panel-count" id="count-bp-acct">—</div>
         <div class="panel-count-lbl">Accounts</div>
+        <div class="panel-count" id="count-bp" style="margin-top:10px">—</div>
+        <div class="panel-count-lbl">BPs</div>
       </div>
     </div>
     <div id="body-bp"><div class="empty">Loading…</div></div>
@@ -413,10 +525,27 @@ tr:hover td { background: var(--gold-pale); }
 const SHEET_ID = '1NYW7MgmyqcPH-n3Tqq5Hx218H-YorTupTOvyxdZNQcA';
 
 const PANELS = [
-  { tab: 'Buyer Personas',       bodyId: 'body-bp', countId: 'count-bp', statId: 'stat-bp' },
-  { tab: 'Conference Attendees', bodyId: 'body-ca', countId: 'count-ca', statId: 'stat-ca' },
-  { tab: 'Networking Session',   bodyId: 'body-ns', countId: 'count-ns', statId: 'stat-ns' },
+  { tab: 'Buyer Personas',       bodyId: 'body-bp', countId: 'count-bp', statId: 'stat-bp', acctId: 'count-bp-acct' },
+  { tab: 'Conference Attendees', bodyId: 'body-ca', countId: 'count-ca', statId: 'stat-ca', targetId: 'target-ca' },
+  { tab: 'Networking Session',   bodyId: 'body-ns', countId: 'count-ns', statId: 'stat-ns', targetId: 'target-ns' },
 ];
+
+// ── Countdown clock ───────────────────────────────────────────────────
+(function countdown() {
+  const target = new Date('2026-07-08T09:00:00+08:00').getTime();
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '0');
+      return;
+    }
+    document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cd-hrs').textContent  = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('cd-min').textContent  = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('cd-sec').textContent  = Math.floor((diff % 60000) / 1000);
+  }
+  tick(); setInterval(tick, 1000);
+})();
 
 async function fetchTab(tabName) {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tabName)}`;
@@ -441,10 +570,15 @@ function parseRows(table) {
 
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-function renderPanel(bodyId, countId, statId, rows) {
+function renderPanel(bodyId, countId, statId, rows, acctId, targetId) {
   const n = rows.length;
   document.getElementById(countId).textContent = n;
   if (statId) document.getElementById(statId).textContent = n;
+  if (targetId && document.getElementById(targetId)) document.getElementById(targetId).textContent = n;
+  if (acctId && document.getElementById(acctId)) {
+    const uniq = new Set(rows.map(r => (r.company||'').toLowerCase().trim()).filter(Boolean)).size;
+    document.getElementById(acctId).textContent = uniq;
+  }
   if (!n) {
     document.getElementById(bodyId).innerHTML = '<div class="empty">No entries yet — add data to this tab in the Google Sheet.</div>';
     return;
@@ -488,10 +622,10 @@ async function loadAll() {
     if (statId) document.getElementById(statId).textContent = '—';
   });
 
-  await Promise.all(PANELS.map(async ({ tab, bodyId, countId, statId }) => {
+  await Promise.all(PANELS.map(async ({ tab, bodyId, countId, statId, acctId, targetId }) => {
     try {
       const table = await fetchTab(tab);
-      renderPanel(bodyId, countId, statId, parseRows(table));
+      renderPanel(bodyId, countId, statId, parseRows(table), acctId, targetId);
     } catch(e) {
       renderError(bodyId, countId, statId, e.message);
     }
