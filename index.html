@@ -393,7 +393,7 @@ tr:hover td { background: var(--gold-pale); }
   <div class="pb-inner">
     <div class="pb-tag">About This Programme</div>
     <div class="pb-title">A structured, multi-touch programme to accelerate Concentric AI's market presence in Malaysia and the Philippines.</div>
-    <div class="pb-desc">Tracking Concentric AI's conference session and private networking at AIBP C&amp;E Malaysia 2026 — part of a broader integrated campaign across Malaysia and the Philippines.</div>
+    <div class="pb-desc">A structured, multi-touch programme to accelerate Concentric AI's market presence in Malaysia and the Philippines.</div>
     <div class="pb-tactics">
       <div class="pb-tactic">
         <div class="pb-tactic-title">Conference &amp; Exhibition</div>
@@ -431,7 +431,7 @@ tr:hover td { background: var(--gold-pale); }
         <div class="tb-stats">
           <div>
             <div class="tb-num">30</div>
-            <div class="tb-lbl">Target Attendees</div>
+            <div class="tb-lbl">Target Registrations</div>
           </div>
           <div class="tb-sep"></div>
           <div>
@@ -453,7 +453,7 @@ tr:hover td { background: var(--gold-pale); }
 <div class="intro-bar">
   <div class="intro-bar-left">
     <div class="intro-title">Live Engagement Overview</div>
-    <div class="intro-sub">Data pulls live from Google Sheets — reload or click Refresh to update</div>
+    <div class="intro-sub">Data pulls live from Google Sheets — reload or click Refresh to update &nbsp;·&nbsp; <span id="last-updated" style="color:var(--amber);font-weight:700"></span></div>
   </div>
   <button class="refresh-btn" onclick="loadAll()">
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
@@ -620,6 +620,17 @@ function renderError(bodyId, countId, statId, msg) {
     </div>`;
 }
 
+async function fetchLastUpdated() {
+  try {
+    const table = await fetchTab('Metadata');
+    const val = table?.rows?.[0]?.c?.[0];
+    if (val) {
+      const display = val.f || String(val.v);
+      document.getElementById('last-updated').textContent = 'Data last updated: ' + display;
+    }
+  } catch(e) { /* silent fail */ }
+}
+
 async function loadAll() {
   PANELS.forEach(({ bodyId, countId, statId }) => {
     document.getElementById(bodyId).innerHTML = '<div class="empty">Loading…</div>';
@@ -642,6 +653,7 @@ async function loadAll() {
 }
 
 loadAll();
+fetchLastUpdated();
 </script>
 </body>
 </html>
